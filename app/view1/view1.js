@@ -7,10 +7,23 @@ angular.module('myApp.view1', ['ngRoute'])
         });
     }])
     .controller('View1Ctrl', [ '$scope', function($scope) {
-        $scope.name = '';
-        $scope.names = [{name:"Chris"}, {name:"Calvin"}];
-        $scope.addName = function() {
-            $scope.names.push( {'name':$scope.name} );
-            $scope.name = '';
+
+        /** CODING START **/
+
+        $scope.basket = [];
+        $scope.products = [
+            { name: "Table" },
+            { name: "Chair" }
+        ];
+
+        $scope.addProduct = function() {
+            $scope.products.push( {'name': $scope.name} );
         };
+
+        $scope.addToBasket = function(product) {
+            $scope.basket.push(product);
+            console.log($scope.basket);
+        };
+
+        /** CODING FINISH **/
     }]);
