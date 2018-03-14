@@ -16,8 +16,8 @@ angular.module('myApp.view1', ['ngRoute'])
             { name: "Chair" }
         ];
 
-        $scope.addProduct = function() {
-            $scope.products.push( {'name': $scope.name} );
+        $scope.addProduct = function(name) {
+            $scope.products.push( {'name': name} );
         };
 
         $scope.addToBasket = function(product) {
