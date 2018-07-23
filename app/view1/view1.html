@@ -1,9 +1,19 @@
 <input type="text" ng-model="name" placeholder="Product name"/>
-<input type="button" value="Add Product" ng-click="addProduct(name)"/>
+<input type="text" ng-model="price" placeholder="Product price"/>
+<input type="button" value="Add Product" ng-click="addProduct(name, price)"/>
 <br/>
 <hr/>
 <ul>
-    <li ng-repeat="product in products">{{product.name}}
+    <li ng-repeat="product in products">{{product.name}}&nbsp;{{product.price}}
         <input type="button" value="+" ng-click="addToBasket(product)"/>
     </li>
 </ul>
+
+<hr>
+
+<ul>
+    <li ng-repeat="product in getBasketTable() track by $index">{{product.name}} {{product.count}} {{product.price}}</li>
+</ul>
+
+Sum: {{getPrice()}}
+
