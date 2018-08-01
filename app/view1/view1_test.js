@@ -13,11 +13,12 @@ describe('app.view1 module', function() {
             $controller('View1Ctrl', {
                 $scope: scope
             });
-            scope.basket = [];
-            scope.products = [
-                { name: "Table" },
-                { name: "Chair" }
-            ]
+            scope.basket = {};
+            scope.net = 0;
+            scope.products = {
+              Table: 1,
+              Chair: 2
+            };
         }));
 
         it('controller should be defined', inject(function($controller) {
@@ -25,16 +26,25 @@ describe('app.view1 module', function() {
         }));
 
         it('scope.basket should be empty on load', inject(function() {
-            expect(scope.basket.length).toBe(0);
+            expect(scope.basket.length).toBe(undefined);
         }));
 
         it('scope.basketz should be defined', inject(function() {
             expect(scope.undefinedBasket).not.toBeDefined();
         }));
 
-        it('Lodash test', inject(function() {
-            expect(_.find(scope.products, { name: "Table" })).toEqual({ name: "Table" });
+        it("scope.net should ne Number", inject(function() {
+          expect(scope.net).toEqual(jasmine.any(Number));
         }));
+
+        it("Adds a quantity correctly", inject(function() {
+          expect(scope.addToBasket("itemX")).toBe(true);
+        }));
+
+
+        // it('Lodash test', inject(function() {
+        //     expect(_.find(scope.products, "Table")).toEqual(1);
+        // }));
 
         /** TESTING START
             JASMINE DOCS: https://jasmine.github.io/2.9/introduction
