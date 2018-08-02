@@ -36,6 +36,18 @@ describe('app.view1 module', function() {
             expect(_.find(scope.products, { name: "Table" })).toEqual({ name: "Table" });
         }));
 
+        it('Check for correctness of total', inject(function($controller) {
+            scope.basket = [{quantity: 1, name: 'abc', price: 1},{quantity: 2, name: 'xyz', price: 2}];
+            expect(scope.getTotalPrice()).toBe(5);
+        }));
+
+        it('Check should reove item if quantity is zero', inject(function($controller) {
+            scope.basket = [{quantity: 1, name: 'abc', price: 1},{quantity: 2, name: 'xyz', price: 2}];
+            scope.removeFromBasket(scope.basket[0]);
+            expect(scope.basket.length).toBe(1);
+        }));
+
+
         /** TESTING START
             JASMINE DOCS: https://jasmine.github.io/2.9/introduction
             LODASH DOCS: https://lodash.com/docs/4.17.5
